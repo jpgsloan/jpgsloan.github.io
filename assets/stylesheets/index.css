@@ -11,7 +11,7 @@
 
 body {
   /* A0A0A0 */
-	background-color: #103245;
+	background-color: #00354D;
 	font-family: 'Playfair Display', serif;
 	font-size: 80%;
 	/*color: #4D4D4F;*/
@@ -28,6 +28,10 @@ h1 {
 	color: #4D4D4F;
 }
 
+a:hover h1{
+    color: #6299BF;
+}
+
 h2 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 95%;
@@ -40,13 +44,13 @@ h2 {
 em {
 	font-family: 'Playfair Display SC', serif;
 	font-style: normal;
-    color: #8089BF
+    color: #6299BF
 }
 
 a {
-	color: #8089BF;
 	text-decoration: none;
 }
+
 .underlined {
 	text-decoration: underline;
 }
@@ -63,10 +67,6 @@ a {
 	padding-top: 40px;
 	padding-bottom: 40px;
 	text-align: center;
-}
-
-.title-container:hover {
-  background-color: #C8C8C8;
 }
 
 .summary-container {
@@ -128,6 +128,21 @@ img {
     width: 100%;
 }
 
+.vert-video {
+    width: 100%;
+    height: 0;
+    padding-bottom: 177.5%;
+    position: relative;
+}
+
+.vert-video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
 .github-button {
     display: inline-block;  
     text-align: center;
@@ -135,7 +150,8 @@ img {
     margin-bottom: 10px;
     padding: 5px 5px;
     border-radius: 4px;
-    border: 1px solid #8089BF;
+    border: 1px solid #6299BF;
+    color: #6299BF;
 }
 
 .gray {
