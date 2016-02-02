@@ -1,0 +1,74 @@
+<head>
+  <title>john sloan // virtual music</title>
+  <link href='../assets/stylesheets/w3.css' rel='stylesheet' type='text/css'>
+  <link href='../assets/stylesheets/index.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='w3-row'>
+    <div class='main-container centered w3-col s12 m10 l9'>
+      <div class='w3-row'>
+        <a href='../index.html'>
+          <div class='title-container centered w3-col s12 m12 l12'>
+            <h1>john sloan</h1>
+            <h2>software engineer / musician</h2>
+          </div>
+        </a>
+      </div>
+      <div class='w3-row'>
+        <div class='line centered w3-col s12 m12 l12'></div>
+      </div>
+      <div class='w3-row'>
+        <div class='centered w3-col s12 m10 l10'>
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <br>
+              <iframe class='video' height='340' src='https://www.youtube.com/embed/NtcoviDCCwQ' frameborder='0' allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class='w3-row'>
+            <div class='centered w3-col s12 m12 l12'>
+              <h1>virtual music</h1>
+              <h2>An attempt at making music more tangible.</h2>
+            </div>
+          </div>
+          <div class='w3-row'>
+            <div class='w3-col s12 m6 l6'>
+              <div class='project-description'>
+                <em>
+                  summary
+                </em>
+                Listening to music on headphones is a static experience. The music is always at your ears even when you turn your head, and that's the only way you get to hear it. But for many musicians, like the members of a choir, they get a whole different experience of what music sounds like. They are immersed in the sound, and hear it differently depending on where they stand in the room. For this project, I attempted to bring this organic and tangible quality to recorded music. I wanted to make it possible to walk around inside a piece of music to listen from different perspectives. This also opened the door for making music that interacts with its listeners. Here's what I came up with:
+                <br>
+                <br>
+                With this Max patch, you can "place" an instrument using any of 3 buttons on your iphone (one for each instrument I made for this demo). When an instrument is placed it will always remain there even if you walk away from it. The idea is that if you had several different instruments or tracks (like guitar, keys, or drums) you could place them all relative to each other so that you could walk from one to the other to hear what that sounds like. For this demo, I chose to make the instruments more interactive, and they each change as the user moves in different ways.
+              </div>
+            </div>
+            <div class='w3-col s12 m6 l6'>
+              <div class='project-description-right'>
+                <em>
+                  how it works
+                </em>
+                There are two parts in the Max patch. The first takes into account which direction you are facing using the iPhone's compass sensor. If you are looking directly at a placed instrument, it sounds like it. If you turn away, it sounds like the instrument is still coming from its original direction rather than following your ears like conventional headphones (you look to the right, the sound is more in your left ear).
+                <br>
+                <br>
+                The second part is locating how far away you are from an instrument. This turned out to be more difficult and I only had limited success. Most methods for determining local distance with sensors are very inaccurate (gps, integrating accelerometer data, blu tooth are all fairly inaccurate for small distances). I chose to use the iPhone's accelerometer data to count steps, paired with the direction you faced when stepping. Using this data, it is possible to calculate how far in the x and y direction you currently are from the placed sound. In the future this approach could be replaced by computer vision to more accurately calculate local distance. But for the purposes of this demo, I did not want to introduce more hardware.
+                <br>
+                <br>
+                For sending iPhone sensor data to Max, I used the gyrOSC app.
+              </div>
+            </div> 
+          </div>
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <a href='https://github.com/jpgsloan/Virtual-Music' class='github-button'>View on Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

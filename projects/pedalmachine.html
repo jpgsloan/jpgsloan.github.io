@@ -1,0 +1,65 @@
+<head>
+  <title>john sloan // pedal machine</title>
+  <link href='../assets/stylesheets/w3.css' rel='stylesheet' type='text/css'>
+  <link href='../assets/stylesheets/index.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='w3-row'>
+    <div class='main-container centered w3-col s12 m10 l9'>
+      <div class='w3-row'>
+        <a href='../index.html'>
+          <div class='title-container centered w3-col s12 m12 l12'>
+            <h1>john sloan</h1>
+            <h2>software engineer / musician</h2>
+          </div>
+        </a>
+      </div>
+      <div class='w3-row'>
+        <div class='line centered w3-col s12 m12 l12'></div>
+      </div>
+      <div class='w3-row'>
+        <div class='centered w3-col s12 m10 l10'>
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <br>
+              <iframe class='video' height='340' src='https://www.youtube.com/embed/t6eC0mQwozc' frameborder='0' allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class='w3-row'>
+            <div class='centered w3-col s12 m12 l12'>
+              <h1>pedal-machine</h1>
+              <h2>machine learning guitar pedal</h2>
+            </div>
+          </div>
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l6'>
+              <div class='project-description'>
+                <em>
+                  summary
+                </em>
+                Pedal-Machine is a machine learning guitar pedal patch for <b>Max 7</b>. The pedal classifies which pedal effect to apply based on your current playing style. This project started out as a school project at UC Berkeley for my music technology course and it has been improved on since then. If you want to run the patch for yourself, make sure to use Max 7 and add the appropriate externals (Odot, CNMAT externals, OSC).
+              </div>
+            </div>
+            <div class='w3-col s12 m12 l6'>
+              <div class='project-description-right'>
+                <em>
+                  how it works
+                </em>
+                To achieve this, the patch captures two features of guitar playing: tempo and amplitude. It sends the current value for each feature through an AdaBoost classifier which then fades to the deduced pedal effect. It is straightforward to add more features if desired (like average frequency or detecting chords vs. single notes) but new training data must be included. In my demo, I walk through the patch and show it in action. During the video, I improvise on guitar while the pedal matches my playing style with a relevant pedal effect. When I play loud and fast, it adds an overdrive effect, and when I play slow and quite it adds a reverb effect.
+              </div>
+            </div>
+          </div>
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <a href='https://github.com/jpgsloan/pedal-machine' class='github-button'>View on Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
