@@ -94,6 +94,15 @@ img {
     padding-right: 20px;
 }
 
+.center {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.top-marg {
+    margin-top: 20px;
+}
+
 .project-description {
 	margin-top: 15px;
     margin-right: 15px;
