@@ -1,0 +1,228 @@
+<head>
+  <title>john sloan // virtual music</title>
+  <link href='../assets/stylesheets/w3.css' rel='stylesheet' type='text/css'>
+  <link href='../assets/stylesheets/index.css' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class='w3-row'>
+    <div class='main-container centered w3-col s12 m10 l9'>
+      <div class='w3-row'>
+        <a href='../index.html'>
+          <div class='title-container centered w3-col s12 m12 l12'>
+            <h1>john sloan</h1>
+            <h3>software engineer / musician</h3>
+          </div>
+        </a>
+      </div>
+      <!-- navigation links -->
+      <div class='w3-row'>
+        <div class='nav-links centered w3-col s6 m4 l4'>
+          <a href='../index.html'>
+            <div class='w3-col s4 m4 l4'>projects</div>
+          </a>
+          <a href='../about.html'>
+            <div class='w3-col s4 m4 l4'>about</div>
+          </a>
+          <a href='../contact.html'>
+            <div class='w3-col s4 m4 l4'>contact</div>
+          </a>
+        </div> 
+      </div>
+      <div class='w3-row'>
+        <div class='line centered w3-col s10 m10 l10'></div>
+      </div>
+      <!-- PROJECT CONTENT -->
+      <div class='w3-row'>
+        <div class='centered w3-col s10 m9 l9'>
+          <div class='w3-row'>
+            <div class='centered w3-col s12 m12 l12'>
+              <h2>spotify puzzles</h2>
+              <h3>solutions to some fun coding challenges</h3>
+            </div>
+          </div>
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <div class='project-description'>
+                <p>
+                  <em>
+                    summary
+                  </em>
+                  A couple coding challenges I completed that demonstrate my general coding style and habits. Descriptions for these challenges can be found <a href='https://github.com/jpgsloan/Spotifypuzzles' class='link-color'>here</a>. 
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l6 project-description right-padding'>
+              <em>
+                Zipf's Song
+              </em>
+              To run Zipf, download the code on github and run the following commands from inside the Zipf folder:  
+              <code>
+                <p>javac Zipf.java <br>
+                more zipfTest.txt | java Zipf</p>
+              </code>
+            </div>
+            <div class='w3-col s12 m12 l6 project-description left-padding'>
+              <em>
+                Reverse Binary
+              </em>
+              To run RevBin, download the code and run the following commands from inside the reversebinary folder:  
+              <code>
+                <p>javac RevBin.java <br>
+                echo 13 | java RevBin</p>
+              </code>
+            </div> 
+          </div>
+          
+          <div class='w3-row'>
+            
+          </div>
+          
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <em>
+                code snippet
+              </em>
+            </div> 
+          </div>
+          
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <pre style="background:#f1f1f1;color:#000"><span style="color:#2060a0">import</span> <span style="color:teal">java.util.*</span>;
+<span style="color:#2060a0">import</span> <span style="color:teal">java.util.regex.Pattern</span>;
+<span style="color:#2060a0">import</span> <span style="color:teal">java.io.BufferedReader</span>;
+<span style="color:#2060a0">import</span> <span style="color:teal">java.io.InputStreamReader</span>;
+
+<span style="color:#406040">/*  The zipf class is designed to act like an ArrayList&lt;zipfNode> with only  
+ *  a few specific features. It will automatically fill itself from standard input
+ *  and, as well, it contains a print method that prints the top m nodes (sorted by highest quality value).
+ *  The ArrayList is loaded up unordered and then sorted at
+ *  O(n) + O(nlogn) -> O(nlogn). It is then printed to std output at O(m).
+ *  */</span>
+<span style="color:teal">public</span> <span style="color:teal">class</span> Zipf {
+    
+    <span style="color:teal">private</span> <span style="color:#a08000">ArrayList&lt;<span style="color:#a08000">ZipfNode</span>></span> zipfList;
+    <span style="color:teal">private</span> <span style="color:#a08000">int</span> n,m;
+    <span style="color:teal">private</span> <span style="color:#a08000">boolean</span> readyToPrint <span style="color:#2060a0">=</span> true;
+    
+    <span style="color:teal">public</span> <span style="color:maroon">Zipf</span>() {
+        this<span style="color:#2060a0">.</span>zipfList <span style="color:#2060a0">=</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">ArrayList&lt;<span style="color:#a08000">ZipfNode</span>></span>();
+        this<span style="color:#2060a0">.</span>loadListFromInput();
+    }
+    
+    <span style="color:teal">private</span> <span style="color:#a08000">void</span> <span style="color:maroon">loadListFromInput</span>() {
+        <span style="color:#406040">// Loads std input as ZipfNodes into an ArrayList. Also checks that input is valid.</span>
+        
+        <span style="color:#a08000">BufferedReader</span> input <span style="color:#2060a0">=</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">BufferedReader</span>(<span style="color:#2060a0">new</span> <span style="color:#a08000">InputStreamReader</span>(<span style="color:#a08000">System</span><span style="color:#2060a0">.</span>in));
+        
+        <span style="color:#2060a0">try</span> {
+            <span style="color:#406040">// Take in first line to set n (number of lines of input) and m(number of lines to output).</span>
+            <span style="color:#a08000">String</span> newLine <span style="color:#2060a0">=</span> input<span style="color:#2060a0">.</span>readLine();
+            <span style="color:#a08000">int</span> spaceIndex <span style="color:#2060a0">=</span> newLine<span style="color:#2060a0">.</span>indexOf(<span style="color:#c03030">' '</span>);
+            this<span style="color:#2060a0">.</span>n <span style="color:#2060a0">=</span> <span style="color:#a08000">Integer</span><span style="color:#2060a0">.</span>parseInt(newLine<span style="color:#2060a0">.</span>substring(<span style="color:#0080a0">0</span>, spaceIndex));
+            this<span style="color:#2060a0">.</span>m <span style="color:#2060a0">=</span> <span style="color:#a08000">Integer</span><span style="color:#2060a0">.</span>parseInt(newLine<span style="color:#2060a0">.</span>substring(spaceIndex <span style="color:#2060a0">+</span> <span style="color:#0080a0">1</span>));
+            
+            <span style="color:#406040">// Check to make sure that n and m are within correct bounds.</span>
+            <span style="color:#2060a0">if</span> (this<span style="color:#2060a0">.</span>m <span style="color:#2060a0">></span> this<span style="color:#2060a0">.</span>n <span style="color:#2060a0">||</span> this<span style="color:#2060a0">.</span>m <span style="color:#2060a0">&lt;</span> <span style="color:#0080a0">1</span>) { <span style="color:#2060a0">throw</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">Exception</span>(); }
+            <span style="color:#2060a0">if</span> (this<span style="color:#2060a0">.</span>n <span style="color:#2060a0">></span> <span style="color:#0080a0">50000</span> <span style="color:#2060a0">||</span> this<span style="color:#2060a0">.</span>n <span style="color:#2060a0">&lt;</span> <span style="color:#0080a0">1</span>) { <span style="color:#2060a0">throw</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">Exception</span>(); }
+            
+            <span style="color:#406040">// Read in n lines of song data.</span>
+            <span style="color:#a08000">Double</span> freq;
+            <span style="color:#a08000">String</span> title <span style="color:#2060a0">=</span> <span style="color:#c03030">""</span>;
+            <span style="color:#2060a0">for</span> (<span style="color:#a08000">int</span> i <span style="color:#2060a0">=</span> <span style="color:#0080a0">1</span>; i <span style="color:#2060a0">&lt;=</span> this<span style="color:#2060a0">.</span>n; i<span style="color:#2060a0">++</span>) {                             
+                <span style="color:#406040">// Split line of input.</span>
+                newLine <span style="color:#2060a0">=</span> input<span style="color:#2060a0">.</span>readLine();
+                spaceIndex <span style="color:#2060a0">=</span> newLine<span style="color:#2060a0">.</span>indexOf(<span style="color:#c03030">' '</span>);
+                freq <span style="color:#2060a0">=</span> <span style="color:#a08000">Double</span><span style="color:#2060a0">.</span>parseDouble(newLine<span style="color:#2060a0">.</span>substring(<span style="color:#0080a0">0</span>, spaceIndex));
+                title <span style="color:#2060a0">=</span> newLine<span style="color:#2060a0">.</span>substring(spaceIndex <span style="color:#2060a0">+</span> <span style="color:#0080a0">1</span>);
+                
+                <span style="color:#406040">// Check that freq is in bounds and title is a-z,0-9,_ only between 1-30 characters.</span>
+                <span style="color:#2060a0">if</span> (freq <span style="color:#2060a0">&lt;</span> <span style="color:#0080a0">0</span> <span style="color:#2060a0">||</span> freq <span style="color:#2060a0">></span> <span style="color:#a08000">Math</span><span style="color:#2060a0">.</span>pow(<span style="color:#0080a0">10</span>, <span style="color:#0080a0">12</span>)) { <span style="color:#2060a0">throw</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">Exception</span>(); } 
+                <span style="color:#2060a0">if</span> (title<span style="color:#2060a0">.</span>length() <span style="color:#2060a0">></span> <span style="color:#0080a0">30</span> <span style="color:#2060a0">||</span> <span style="color:#2060a0">!</span><span style="color:#a08000">Pattern</span><span style="color:#2060a0">.</span>matches(<span style="color:#c03030">"[a-z0-9_]+"</span>, title)) { <span style="color:#2060a0">throw</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">Exception</span>(); }
+                
+                <span style="color:#406040">// Create new node and add to arraylist.</span>
+                <span style="color:#a08000">ZipfNode</span> newNode <span style="color:#2060a0">=</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">ZipfNode</span>(freq, i, title);
+                this<span style="color:#2060a0">.</span>zipfList<span style="color:#2060a0">.</span>add(newNode);
+            }
+            
+            <span style="color:#406040">// Sorts the zipfList according to custom compareTo() found below.</span>
+            <span style="color:#a08000">Collections</span><span style="color:#2060a0">.</span>sort(this<span style="color:#2060a0">.</span>zipfList);
+            
+        } <span style="color:#2060a0">catch</span> (<span style="color:#a08000">Throwable</span> e) {
+            this<span style="color:#2060a0">.</span>readyToPrint <span style="color:#2060a0">=</span> false;
+            <span style="color:#a08000">System</span><span style="color:#2060a0">.</span>out<span style="color:#2060a0">.</span>println(<span style="color:#c03030">"input data is incorrect!"</span>);
+        }
+    }
+    
+    <span style="color:teal">public</span> <span style="color:#a08000">void</span> <span style="color:maroon">print</span>() {
+        <span style="color:#406040">// Unloads top m nodes of zipfList to output and prints to std output.</span>
+        <span style="color:#a08000">StringBuilder</span> strBuilder <span style="color:#2060a0">=</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">StringBuilder</span>();
+        <span style="color:#a08000">ZipfNode</span> node;
+        <span style="color:#2060a0">for</span> (<span style="color:#a08000">int</span> i <span style="color:#2060a0">=</span> <span style="color:#0080a0">0</span>; i <span style="color:#2060a0">&lt;</span> this<span style="color:#2060a0">.</span>m; i<span style="color:#2060a0">++</span>){
+            node <span style="color:#2060a0">=</span> this<span style="color:#2060a0">.</span>zipfList<span style="color:#2060a0">.</span>get(this<span style="color:#2060a0">.</span>zipfList<span style="color:#2060a0">.</span>size() <span style="color:#2060a0">-</span> i <span style="color:#2060a0">-</span> <span style="color:#0080a0">1</span>);
+            strBuilder<span style="color:#2060a0">.</span>append(node<span style="color:#2060a0">.</span>title)<span style="color:#2060a0">.</span>append(<span style="color:#c03030">"<span style="color:maroon">\n</span>"</span>);
+        }
+        <span style="color:#a08000">System</span><span style="color:#2060a0">.</span>out<span style="color:#2060a0">.</span>print(strBuilder<span style="color:#2060a0">.</span>toString());
+    }
+    
+    <span style="color:teal">public</span> <span style="color:teal">static</span> <span style="color:#a08000">void</span> <span style="color:maroon">main</span>(<span style="color:#a08000">String</span>[] args) {
+        <span style="color:#a08000">Zipf</span> album <span style="color:#2060a0">=</span> <span style="color:#2060a0">new</span> <span style="color:#a08000">Zipf</span>();
+        <span style="color:#2060a0">if</span> (album<span style="color:#2060a0">.</span>readyToPrint <span style="color:#2060a0">==</span> true) {
+            album<span style="color:#2060a0">.</span>print();
+        }
+    }
+    
+    <span style="color:#406040">/* A zipfNode is essentially a song from the album. Each node contains 
+     * its track number (i), song title, and Zipf's Law adjusted play frequency (quality).
+     */</span>
+    <span style="color:teal">private</span> <span style="color:teal">class</span> ZipfNode <span style="color:teal">implements</span> Comparable&lt;<span style="color:#a08000">ZipfNode</span>> {
+        <span style="color:teal">private</span> <span style="color:#a08000">int</span> i;
+        <span style="color:teal">private</span> <span style="color:#a08000">Double</span> quality;
+        <span style="color:teal">private</span> <span style="color:#a08000">String</span> title <span style="color:#2060a0">=</span> <span style="color:#c03030">""</span>;
+        
+        <span style="color:teal">public</span> <span style="color:maroon">ZipfNode</span> (<span style="color:#a08000">Double</span> freq, <span style="color:#a08000">int</span> i, <span style="color:#a08000">String</span> song) {
+            this<span style="color:#2060a0">.</span>title <span style="color:#2060a0">=</span> song;
+            this<span style="color:#2060a0">.</span>i <span style="color:#2060a0">=</span> i;
+            this<span style="color:#2060a0">.</span>quality <span style="color:#2060a0">=</span> freq <span style="color:#2060a0">*</span> i;
+        }
+        
+        <span style="color:teal">public</span> <span style="color:#a08000">int</span> <span style="color:maroon">compareTo</span>(<span style="color:#a08000">ZipfNode</span> other) {
+            <span style="color:#406040">// Sorts nodes by highest quality value and when</span>
+            <span style="color:#406040">// tied, by lowest track number.</span>
+            <span style="color:#2060a0">if</span> (other<span style="color:#2060a0">.</span>quality <span style="color:#2060a0">></span> this<span style="color:#2060a0">.</span>quality) {
+                <span style="color:#2060a0">return</span> <span style="color:#2060a0">-</span><span style="color:#0080a0">1</span>;
+            } <span style="color:#2060a0">else</span> <span style="color:#2060a0">if</span> (other<span style="color:#2060a0">.</span>quality <span style="color:#2060a0">&lt;</span> this<span style="color:#2060a0">.</span>quality) {
+                <span style="color:#2060a0">return</span> <span style="color:#0080a0">1</span>;
+            } <span style="color:#2060a0">else</span> {
+                <span style="color:#2060a0">if</span> (other<span style="color:#2060a0">.</span>i <span style="color:#2060a0">&lt;</span> this<span style="color:#2060a0">.</span>i) {
+                    <span style="color:#2060a0">return</span> <span style="color:#2060a0">-</span><span style="color:#0080a0">1</span>;
+                } <span style="color:#2060a0">else</span> <span style="color:#2060a0">if</span> (other<span style="color:#2060a0">.</span>i <span style="color:#2060a0">></span> this<span style="color:#2060a0">.</span>i) {
+                    <span style="color:#2060a0">return</span> <span style="color:#0080a0">1</span>;
+                } <span style="color:#2060a0">else</span> {
+                    <span style="color:#2060a0">return</span> <span style="color:#0080a0">0</span>;
+                }
+            }
+        }
+    }
+}
+
+              </pre>
+            </div> 
+          </div>
+          
+          <div class='w3-row'>
+            <div class='w3-col s12 m12 l12'>
+              <a href='https://github.com/jpgsloan/Spotifypuzzles' class='github-button'>View on Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
